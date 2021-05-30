@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-public class ReusableMethods {
+public class ReusableMethods extends BaseClass{
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -139,5 +139,27 @@ public class ReusableMethods {
     public static void clickWithJS(WebElement element) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
+    //login for hypnotes
+    public static void login(String username, String password){
+
+        driver.findElement(By.cssSelector("[href='/api/login']")).click();
+        driver.findElement(By.xpath("//input[@type='email']")).sendKeys(username);
+        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+    }
+//logout for hypnotes
+    public static void logout(String name){
+        driver.findElement(By.cssSelector("[href='/api/logout']")).click();
+    }
+//this method will clear text box
+    public static void cleanTextInBox(WebElement element) {
+        String inputText = element.getAttribute("value");
+        if( inputText != null ) {
+            for(int i=0; i<inputText.length();i++) {
+                element.sendKeys(Keys.BACK_SPACE);
+            }
+        }
     }
 }
