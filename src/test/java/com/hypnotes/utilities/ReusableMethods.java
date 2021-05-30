@@ -150,7 +150,7 @@ public class ReusableMethods{
         Driver.getDriver().findElement(By.xpath("//button[@type='submit']")).click();
     }
 //logout for hypnotes
-    public static void logout(String name){
+    public static void logout(){
         Driver.getDriver().findElement(By.cssSelector("[href='/api/logout']")).click();
     }
 //this method will clear text box
