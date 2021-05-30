@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-public class ReusableMethods extends BaseClass{
+public class ReusableMethods{
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -144,14 +144,14 @@ public class ReusableMethods extends BaseClass{
     //login for hypnotes
     public static void login(String username, String password){
 
-        driver.findElement(By.cssSelector("[href='/api/login']")).click();
-        driver.findElement(By.xpath("//input[@type='email']")).sendKeys(username);
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Driver.getDriver().findElement(By.cssSelector("[href='/api/login']")).click();
+        Driver.getDriver().findElement(By.xpath("//input[@type='email']")).sendKeys(username);
+        Driver.getDriver().findElement(By.xpath("//input[@type='password']")).sendKeys(password);
+        Driver.getDriver().findElement(By.xpath("//button[@type='submit']")).click();
     }
 //logout for hypnotes
     public static void logout(String name){
-        driver.findElement(By.cssSelector("[href='/api/logout']")).click();
+        Driver.getDriver().findElement(By.cssSelector("[href='/api/logout']")).click();
     }
 //this method will clear text box
     public static void cleanTextInBox(WebElement element) {
