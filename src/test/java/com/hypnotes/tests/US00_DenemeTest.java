@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class US00_DenemeTest extends ReusableMethods {
     US00_DenemePage US00DenemePage =new US00_DenemePage();
-
+     ReusableMethods reusableMethods=new ReusableMethods();
     @Test
 public void loginTest() throws InterruptedException {
 
@@ -28,10 +28,14 @@ public void loginTest() throws InterruptedException {
         ReusableMethods.clickWithJS(US00DenemePage.logoutButton);
         Thread.sleep(3000);
 
-        // methodla login yapma
+        // methodla login yapma--extendle alma
         login(ConfigurationReader.getProperty("semra-email"),ConfigurationReader.getProperty("semra-password"));
-        //methodla logout yapma
+        //methodla logout yapma----extendle alma
         logout();
 
+        // methodla login yapma--objeyle alma
+        reusableMethods.login(ConfigurationReader.getProperty("semra-email"),ConfigurationReader.getProperty("semra-password"));
+        // methodla logou yapma--objeyle alma
+        reusableMethods.logout();
     }
 }
