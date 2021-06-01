@@ -9,6 +9,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public abstract class TestBaseFinal {
     protected static ExtentReports extentReports;
@@ -18,8 +20,11 @@ public abstract class TestBaseFinal {
     @BeforeTest(alwaysRun = true) // alwaysRun : her zaman çalıştır.
     public void setUpTest() {
         extentReports = new ExtentReports();
+        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
-        String filePath = System.getProperty("user.dir") + "/test-output/benimraporum.html";
+        String filePath = System.getProperty("user.dir") + "/test-output/screenshot"+ date +".html";
+        //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
+        //String filePath = System.getProperty("user.dir") + "/test-output/benimraporum.html";
         //oluşturmak istediğimiz raporu (html formatında) başlatıyoruz, filePath ile dosya yolunu belirliyoruz.
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
         extentReports.attachReporter(extentHtmlReporter);
