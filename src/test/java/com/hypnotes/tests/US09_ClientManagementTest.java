@@ -12,11 +12,11 @@ public class US09_ClientManagementTest {
 
     @Test
     public void ConnectingWebsiteTest() throws InterruptedException {
-        Driver.getDriver().get(ConfigurationReader.getProperty("web-link"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
 
         clientManagementPage.login.click();
-        clientManagementPage.username.sendKeys(ConfigurationReader.getProperty("userName"));
-        clientManagementPage.password.sendKeys(ConfigurationReader.getProperty("userPassword"));
+        clientManagementPage.username.sendKeys(ConfigurationReader.getProperty("userSlm"));
+        clientManagementPage.password.sendKeys(ConfigurationReader.getProperty("passwordSlm"));
         clientManagementPage.loginButton.click();
         Thread.sleep(2000);
 
