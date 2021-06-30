@@ -33,4 +33,31 @@ public class US00_DenemePage {
  @FindBy( xpath = "//a[@href='/api/logout']")
  public WebElement logoutButton;
 
+
+
+ @FindBy( xpath = "//a[@href='/dashboard/add-client']")
+ public WebElement addClientButton;
+
+
+ //id="first_name"
+ @FindBy(id="first_name")
+ public WebElement firstNameBox;
+
+
+
+
+ @FindBy(id="last_name")
+ public WebElement lastNameBox;
+
+ @FindBy(id="phone")
+ public WebElement phoneNumberBox;
+
+ @FindBy(id="occupation")
+ public WebElement occupationBox;
+
+
+ @FindBy(xpath="//button[@type='submit']")
+ public WebElement addButton;
+
+
 }
