@@ -55,6 +55,8 @@ public class US07_AddClient extends ReusableMethods {
     us00DenemePage.addButton.click();
     Thread.sleep(2000);
 
+
+
 }
 
 
