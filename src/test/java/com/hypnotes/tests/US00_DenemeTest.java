@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US00_DenemeTest extends ReusableMethods {
-    US00_DenemePage US00DenemePage =new US00_DenemePage();
+     US00_DenemePage US00DenemePage =new US00_DenemePage();
      ReusableMethods reusableMethods=new ReusableMethods();
     @Test
 public void loginTest() throws InterruptedException {
@@ -16,10 +16,13 @@ public void loginTest() throws InterruptedException {
         Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
         US00DenemePage.loginButton.click();
 
-
+        Thread.sleep(3000);
         US00DenemePage.emailBox.sendKeys(ConfigurationReader.getProperty("semra-email"));
+        Thread.sleep(3000);
         US00DenemePage.passwordBox.sendKeys(ConfigurationReader.getProperty("semra-password"));
+        Thread.sleep(3000);
         US00DenemePage.loginButton1.click();
+        Thread.sleep(3000);
 
 
         Assert.assertTrue(US00DenemePage.afterLogin.isDisplayed());
