@@ -48,7 +48,8 @@ public class US07_AddClient extends ReusableMethods {
     Thread.sleep(2000);
     us00DenemePage.occupationBox.sendKeys("QA Tester");
     Thread.sleep(2000);
-
+    us00DenemePage.imgButton.sendKeys("/Users/",ConfigurationReader.getProperty("user"),"/IdeaProjects/HypnotesProject/src/test/resources/Todd-Haynes-2017.jpeg");
+    Thread.sleep(2000);
     Actions actions = new Actions(Driver.getDriver());
     actions.sendKeys(Keys.PAGE_DOWN).perform();
 
