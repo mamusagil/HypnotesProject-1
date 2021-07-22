@@ -59,5 +59,9 @@ public class US00_DenemePage {
  @FindBy(xpath="//button[@type='submit']")
  public WebElement addButton;
 
+ //inputGroupFile01
+
+ @FindBy(id="inputGroupFile01")
+ public WebElement imgButton;
 
 }
