@@ -29,6 +29,7 @@ public class US009_ClientManagementEditTest {
         us_013accountManagement.nextButton.click();
         js.executeScript("window.scrollBy(0,1000)");
         ReusableMethods.clickWithJS(us_013accountManagement.agreementButton2);
+        ReusableMethods.waitFor(2);
         us_013accountManagement.submitButton.click();
         clientManagement.navigateToClientTabs();
         js.executeScript("window.scrollBy(0,1000)");
@@ -39,6 +40,7 @@ public class US009_ClientManagementEditTest {
         Assert.assertEquals(clientManagement.messageUpdated.getText(), "Client Info has been successfully updated!✅");
         js.executeScript("window.scrollBy(0,0)");
         // us_013accountManagement.logoutMethod();
+      //  src/test/resources/Todd-Haynes-2017.jpeg
     }
 
 

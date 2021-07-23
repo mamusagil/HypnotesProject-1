@@ -24,11 +24,13 @@ public class US013_AccountManagement {
     public WebElement verificationSMSsent;
     @FindBy(xpath = "//div[@class='toast-message']")
     public WebElement toastMessage;
+    @FindBy(xpath = "//*[contains(text(),'Given time exceed for verification. Please try again...')]")
+    public WebElement timefinishedMessage;
     @FindBy(xpath = "//*[@class='text-center']")
     public WebElement message;
     @FindBy(xpath = "//*[contains(text(),'Cancel')]")
     public WebElement cancelBtn;
-    @FindBy(xpath = "//*[contains(text(),'Confirm')]")
+    @FindBy(xpath = "//button[@class='btn btn-success']")
     public WebElement confirmBtn;
     @FindBy(xpath = "//*[@id='securityCode-input']")
     public WebElement securityCodeInput;
@@ -88,6 +90,8 @@ public class US013_AccountManagement {
     public WebElement agreementButton2;
     @FindBy(xpath = "//span[contains(text(),'Submit')]")
     public WebElement submitButton;
+    @FindBy(xpath = "//button[contains(text(),'Close')]")
+    public WebElement closeButton;
 
     public void loginMethod() {
         ReusableMethods.waitForClickablility(Login, 10);

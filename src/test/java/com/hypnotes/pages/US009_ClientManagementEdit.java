@@ -51,7 +51,10 @@ public class US009_ClientManagementEdit {
         inputBoxes.get(2).sendKeys(telephone);
         inputBoxes.get(3).clear();
         inputBoxes.get(3).sendKeys(Occupation);
-        browseFile.sendKeys("C:\\Users\\ASUS\\IdeaProjects\\HyponotesFullTestYB\\src\\test\\resources\\IMG_2830.JPG");
+        String projectPath = System.getProperty("user.dir");
+        String filePath = "src/test/resources/pasaport.jpg";
+        String fullPath = projectPath+"/"+filePath;
+        browseFile.sendKeys(fullPath);
         saveButton.click();
     }
     public void invalidValues(String name, String surname ,String telephone,String Occupation)  {
