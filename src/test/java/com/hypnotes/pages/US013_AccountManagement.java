@@ -4,6 +4,7 @@ import com.hypnotes.utilities.ConfigurationReader;
 import com.hypnotes.utilities.Driver;
 import com.hypnotes.utilities.ReusableMethods;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -135,6 +136,12 @@ public class US013_AccountManagement {
         ReusableMethods.waitForVisibility(passwordybalkas,4);
         passwordybalkas.sendKeys("mehtap1976MEHTAP");
         nextButton2.click();
+    }
+    public  void scrollDownToElement() {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,1500)");
+    }
+    public  void scrollUpToElement() {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,-1500)");
     }
 }
    // This Method Navigates to Settings Menu
