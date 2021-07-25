@@ -14,7 +14,7 @@ public class US013_AccountManagementTest {
 
     @Test(priority = 1)
     public void validPhoneTest() throws InterruptedException {
-        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_testlink"));
         us013_accountManagement.loginByLinkedinMethod();
         us013_accountManagement.settings.click();
         us013_accountManagement.verificationBtn.click();
@@ -71,7 +71,6 @@ public class US013_AccountManagementTest {
         System.out.println("message = " + message);
         Assert.assertEquals(message, "Given time exceed for verification. Please try again...");
         us013_accountManagement.closeButton.click();
-        Driver.closeDriver();
 
     }
     @Test(priority = 5)

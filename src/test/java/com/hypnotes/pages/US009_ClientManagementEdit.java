@@ -44,10 +44,14 @@ public class US009_ClientManagementEdit {
     public WebElement sessions;
     @FindBy (xpath="//div[@class='toast-message']")
     public WebElement messageUpdated;
+    @FindBy (xpath="//a[@class='genric-btn primary circle arrow']")
+    public WebElement addNewProblem;
+    @FindBy (xpath="//input[@id='title']")
+    public WebElement title;
 
    public void navigateToClientTabs() throws InterruptedException {
        ReusableMethods.waitForClickablility(clientsButton,3);
-     ReusableMethods.clickWithJS(clientsButton);
+      ReusableMethods.clickWithJS(clientsButton);
        ReusableMethods.waitForClickablility(viewDetail,3);
        ReusableMethods.clickWithJS(viewDetail);
        ReusableMethods.waitForClickablility(clientInfo,3);
@@ -97,5 +101,15 @@ public class US009_ClientManagementEdit {
 
         return listBeforeCancel.equals(listafterCancel);
 
+    }
+    public void navigateToPresentingIssues()  {
+        ReusableMethods.waitForClickablility(clientsButton, 3);
+        ReusableMethods.clickWithJS(clientsButton);
+        ReusableMethods.waitForClickablility(viewDetail, 3);
+        ReusableMethods.clickWithJS(viewDetail);
+        ReusableMethods.waitForClickablility(presentingIssue, 3);
+        ReusableMethods.clickWithJS(presentingIssue);
+        ReusableMethods.waitForClickablility(addNewProblem ,3);
+        ReusableMethods.clickWithJS(addNewProblem);
     }
 }
