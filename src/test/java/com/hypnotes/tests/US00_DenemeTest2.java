@@ -1,6 +1,6 @@
 package com.hypnotes.tests;
 
-import com.hypnotes.pages.US00_DenemePage;
+import com.hypnotes.pages.US00_SmokeTestPage;
 import com.hypnotes.utilities.ConfigurationReader;
 import com.hypnotes.utilities.Driver;
 import com.hypnotes.utilities.TestBaseFinal;
@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US00_DenemeTest2 extends TestBaseFinal {
-    US00_DenemePage US00DenemePage =new US00_DenemePage();
+    US00_SmokeTestPage US00DenemePage =new US00_SmokeTestPage();
     @Test
     public void negativeLoginTest() throws InterruptedException {
         Thread.sleep(3000);
