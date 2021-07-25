@@ -2,6 +2,7 @@ package com.hypnotes.pages;
 
 import com.hypnotes.utilities.Driver;
 
+import com.hypnotes.utilities.ReusableMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,9 +22,17 @@ public class US009_ClientManagementEdit {
     public WebElement editButton;
     @FindBy(xpath="//input[@class='form-control infoInput']")
     public List<WebElement> inputBoxes=new ArrayList<>();
+    @FindBy(xpath="//label[contains(text(),'First Name')]/../descendant::input")
+    public WebElement inputBoxFirstName;
+    @FindBy(xpath="//label[contains(text(),'Last Name')]/../descendant::input")
+    public WebElement inputBoxLastName;
+    @FindBy(xpath="//label[contains(text(),'Phone Number')]/../descendant::input")
+    public WebElement inputBoxPhoneNumber;
+    @FindBy(xpath="//label[contains(text(),'Occupation')]/../descendant::input")
+    public WebElement inputBoxOccupation;
     @FindBy(xpath="//*[contains(text(),'Save')]")
     public WebElement saveButton;
-    @FindBy(xpath="//*[contains(text(),'Save')]")
+    @FindBy(xpath="//*[contains(text(),'Cancel')]")
     public WebElement cancelButton;
     @FindBy(xpath="//*[@id='inputGroupFile01']")
     public WebElement browseFile;
@@ -37,10 +46,13 @@ public class US009_ClientManagementEdit {
     public WebElement messageUpdated;
 
    public void navigateToClientTabs() throws InterruptedException {
-     clientsButton.click();
-     Thread.sleep(2000);
-     viewDetail.click();
-     clientInfo.click();
+       ReusableMethods.waitForClickablility(clientsButton,3);
+     ReusableMethods.clickWithJS(clientsButton);
+       ReusableMethods.waitForClickablility(viewDetail,3);
+       ReusableMethods.clickWithJS(viewDetail);
+       ReusableMethods.waitForClickablility(clientInfo,3);
+       ReusableMethods.clickWithJS(clientInfo);
+
    }
     public void inputValidValues(String name, String surname ,String telephone,String Occupation)  {
         inputBoxes.get(0).clear();
@@ -52,7 +64,7 @@ public class US009_ClientManagementEdit {
         inputBoxes.get(3).clear();
         inputBoxes.get(3).sendKeys(Occupation);
         String projectPath = System.getProperty("user.dir");
-        String filePath = "src/test/resources/pasaport.jpg";
+        String filePath = "src/test/resources/Todd-Haynes-2017.jpeg";
         String fullPath = projectPath+"/"+filePath;
         browseFile.sendKeys(fullPath);
         saveButton.click();
@@ -75,7 +87,7 @@ public class US009_ClientManagementEdit {
         listBeforeCancel.add(inputBoxes.get(2).getAttribute("value"));
         listBeforeCancel.add(inputBoxes.get(3).getAttribute("value"));
         System.out.println("listBeforeCancel = " + listBeforeCancel);
-        cancelButton.click();
+        ReusableMethods.clickWithJS(cancelButton);
         List<String> listafterCancel= new ArrayList<>();
         listafterCancel.add(inputBoxes.get(0).getAttribute("value"));
         listafterCancel.add(inputBoxes.get(1).getAttribute("value"));

@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 public class US013_AccountManagementTest {
     US013_AccountManagement us013_accountManagement= new US013_AccountManagement();
-    // WebDriver driver= Driver.getDriver();
+
     @Test(priority = 1)
     public void validPhoneTest() throws InterruptedException {
         Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
@@ -76,8 +76,6 @@ public class US013_AccountManagementTest {
     }
     @Test(priority = 5)
     public void cancelPhoneVerificationTest() throws InterruptedException {
-        //Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
-        // us013_accountManagement.loginMethod();
         us013_accountManagement.settings.click();
         us013_accountManagement.verificationBtn.click();
         us013_accountManagement.phoneInputBox.sendKeys("1423412330");
@@ -85,6 +83,7 @@ public class US013_AccountManagementTest {
         us013_accountManagement.sendVerificationButton.click();
         ReusableMethods.waitForClickablility(us013_accountManagement.cancelBtn,3);
         us013_accountManagement.cancelBtn.click();
+        Assert.assertTrue(us013_accountManagement.sendVerificationButton.isEnabled());
         Driver.getDriver().navigate().refresh();
         Thread.sleep(2000);
     }
