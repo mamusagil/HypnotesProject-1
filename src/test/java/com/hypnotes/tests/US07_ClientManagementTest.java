@@ -90,6 +90,7 @@ public class US07_ClientManagementTest extends ReusableMethods {
         ReusableMethods.hover(test.editButton);
         String editButton = test.editButton.getText();
         Assert.assertEquals(editButton,"Edit");
+        ReusableMethods.logout();
     }
 
 
