@@ -20,7 +20,7 @@ public class US009_ClientManagementEditTest {
 
     @Test(priority = 1)
     public void TestClientManagement() throws InterruptedException {
-        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_testlink"));
         us_013accountManagement.loginByLinkedinMethod();
          ReusableMethods.waitFor(3);
         us_013accountManagement.viewButton.click();
@@ -121,7 +121,12 @@ public class US009_ClientManagementEditTest {
     }
     @Test(priority = 6)
     public void presentingIssueAddnewProblemTest(){
-
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
+        us_013accountManagement.loginByLinkedinMethod();
+        clientManagement.navigateToPresentingIssues();
+        ReusableMethods.waitFor(2);
+        us_013accountManagement.scrollDownToElement();
+        clientManagement.title.sendKeys("hello");
     }
 
 
