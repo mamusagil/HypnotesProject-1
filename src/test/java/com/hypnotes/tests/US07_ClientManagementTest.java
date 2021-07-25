@@ -91,6 +91,8 @@ public class US07_ClientManagementTest extends ReusableMethods {
         String editButton = test.editButton.getText();
         Assert.assertEquals(editButton,"Edit");
         ReusableMethods.logout();
+        Driver.closeDriver();
+        ReusableMethods.waitFor(3);
     }
 
 
