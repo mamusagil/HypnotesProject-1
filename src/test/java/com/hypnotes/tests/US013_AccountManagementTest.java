@@ -71,7 +71,6 @@ public class US013_AccountManagementTest {
         System.out.println("message = " + message);
         Assert.assertEquals(message, "Given time exceed for verification. Please try again...");
         us013_accountManagement.closeButton.click();
-        Driver.closeDriver();
 
     }
     @Test(priority = 5)
