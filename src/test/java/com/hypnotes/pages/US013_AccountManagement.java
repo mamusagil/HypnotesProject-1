@@ -137,8 +137,8 @@ public class US013_AccountManagement {
         passwordybalkas.sendKeys("mehtap1976MEHTAP");
         nextButton2.click();
     }
-    public  void scrollDownToElement() {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,1500)");
+    public  void scrollDownToElement(String value) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,"+value+")");
     }
     public  void scrollUpToElement() {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,-1500)");

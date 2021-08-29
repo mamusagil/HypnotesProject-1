@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
@@ -28,8 +29,16 @@ public class Driver {
         if(driver == null){
             switch (ConfigurationReader.getProperty("browser")){
                 case "chrome":
+                    ChromeOptions options  = new ChromeOptions();
+                    HashMap<String,Integer> contentSettings= new HashMap<String,Integer>() ;
+                    HashMap<String,Object> profile= new HashMap<String,Object>() ;
+                    HashMap<String,Object> prefs= new HashMap<String,Object>() ;
+                    contentSettings.put("media_stream",1);
+                    profile.put("managed_default_content_settings",contentSettings);
+                    prefs.put("profile",profile);
+                    options.setExperimentalOption("prefs",prefs);
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(options);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();

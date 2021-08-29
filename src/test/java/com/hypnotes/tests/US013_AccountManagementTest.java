@@ -14,8 +14,8 @@ public class US013_AccountManagementTest {
 
     @Test(priority = 1)
     public void validPhoneTest() throws InterruptedException {
-        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_testlink"));
-        us013_accountManagement.loginByLinkedinMethod();
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
+        us013_accountManagement.loginMethod();
         us013_accountManagement.settings.click();
         us013_accountManagement.verificationBtn.click();
         us013_accountManagement.phoneInputBox.sendKeys("4234123012");
@@ -35,12 +35,14 @@ public class US013_AccountManagementTest {
     }
     @Test(priority = 3)
     public void sendCodeTest()throws InterruptedException  {
+        us013_accountManagement.settings.click();
         us013_accountManagement.verificationBtn.click();
         us013_accountManagement.phoneInputBox.sendKeys("1423412330");
         us013_accountManagement.sendVerificationButton.click();
         us013_accountManagement.securityCodeInput.sendKeys("3453452");
         String message = us013_accountManagement.toastMessage.getText();
-        Thread.sleep(2000);
+        System.out.println(message);
+        ReusableMethods.waitFor(2);
         Assert.assertEquals(message, "Verification code is successfully sent your phone.");
         Driver.getDriver().navigate().refresh();
     }
@@ -53,8 +55,9 @@ public class US013_AccountManagementTest {
         ReusableMethods.waitFor(5);
         ReusableMethods.waitForVisibility(us013_accountManagement.securityCodeInput,5);
         us013_accountManagement.securityCodeInput.sendKeys("3453452");
-        Thread.sleep(3000);
+        ReusableMethods.waitFor(3);
         us013_accountManagement.confirmBtn.click();
+        ReusableMethods.waitFor(2);
         String message = us013_accountManagement.toastMessage.getText();
         System.out.println("message = " + message);
         Assert.assertEquals(message, "Your security code has expired or wrong!");
