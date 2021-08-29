@@ -13,6 +13,14 @@ public class US07_ClientManagement_ClientPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    // Second Project
+    @FindBy(xpath = "//a[@href='/dashboard/documents']")
+    public WebElement documentButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Add Document')]")
+    public WebElement addDocument;
+    ////////////////////////////////////
+
     @FindBy( xpath = "//a[@href='/api/login']")
     public WebElement loginButton;
 //    By loginButton = By.xpath("//a[@href='/api/login']");
@@ -29,7 +37,11 @@ public class US07_ClientManagement_ClientPage {
     @FindBy( xpath = "//input[@id='phone']")
     public WebElement phone;
 
-    @FindBy( xpath = "//button[contains(@class,'genric-btn info-border circle')]")
+    @FindBy(xpath = "//input[@id='postal']")
+    public WebElement zipCode;
+
+   // @FindBy( xpath = "//button[contains(@class,'genric-btn info-border circle')]")
+   @FindBy( xpath = "//button[contains(text(),'Add')]")
     public WebElement addButton;
 
     // After adding one client, to add another one
@@ -62,6 +74,9 @@ public class US07_ClientManagement_ClientPage {
 
     @FindBy(xpath = "//span[@class='ant-comment-content-author-name']")
     public List<WebElement> isClientClickable;
+
+    @FindBy(xpath = "//div[@class='left-action-button']//span//a")
+    public WebElement viewDetails;
 
 
     @FindBy(xpath = "//button[@id='editBtn']")
