@@ -16,6 +16,8 @@ public class US07_ClientManagementTest extends ReusableMethods {
     CommonPage commonPage = new CommonPage();
     US07_ClientManagement_ClientPage test = new US07_ClientManagement_ClientPage();
 
+
+
     @BeforeTest
     public void login() {
         Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link_ayfer"));
@@ -95,14 +97,11 @@ public class US07_ClientManagementTest extends ReusableMethods {
     @Test(priority =4) //AC-04 Listed clients will be clickable to navigate client details page
     public void listedClientsWillBeClickable() throws InterruptedException {
 
-        test.viewDetails.click();
 //        Actions action = new Actions(Driver.getDriver());
 //        action.moveToElement(test.editButton).perform();
 //        ReusableMethods.hover(test.editButton);
         test.isClientClickable.get(0).click(); // click
         Thread.sleep(1000);
-
-
         String editButton = test.editButton.getText();
         Assert.assertEquals(editButton,"Edit");
         ReusableMethods.logout();

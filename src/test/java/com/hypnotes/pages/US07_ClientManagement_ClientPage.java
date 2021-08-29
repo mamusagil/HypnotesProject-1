@@ -9,6 +9,8 @@ import java.util.List;
 
 public class US07_ClientManagement_ClientPage {
 
+
+
     public US07_ClientManagement_ClientPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
