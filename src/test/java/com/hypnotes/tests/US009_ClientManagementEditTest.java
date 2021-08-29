@@ -164,6 +164,7 @@ public class US009_ClientManagementEditTest {
         Assert.assertEquals(clientManagement.imageAddedmessage.getText(), "2 images added.");
         ReusableMethods.waitFor(8);
         clientManagement.deleteIssue.click();
+        ReusableMethods.waitFor(3);
         clientManagement.no.click();
        int numberofissuesBeforedelete=clientManagement.issueArray.size();
         System.out.println(numberofissuesBeforedelete);
