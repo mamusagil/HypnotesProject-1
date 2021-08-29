@@ -135,8 +135,6 @@ public class US009_ClientManagementEditTest {
 //
     @Test(priority = 2)
     public void presentingIssue_Attachments_Test() {
-       // Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
-     //  us_013accountManagement.loginMethod();
         clientManagement.navigateToPresentingIssues();
         ReusableMethods.waitFor(2);
         us_013accountManagement.scrollDownToElement("1500");
@@ -172,6 +170,7 @@ public class US009_ClientManagementEditTest {
        ReusableMethods.waitFor(3);
         clientManagement.yes.click();
         ReusableMethods.waitFor(2);
+        Driver.getDriver().navigate().refresh();
        int numberofissuesAfterdelete=clientManagement.issueArray.size();
         System.out.println(numberofissuesAfterdelete);
         Assert.assertFalse(numberofissuesAfterdelete==numberofissuesBeforedelete,"Issue not deleted");
@@ -222,27 +221,14 @@ public class US009_ClientManagementEditTest {
     public void presentingIssue_Attachments_Delete_File_Test() {
         clientManagement.navigateToPresentingIssues();
         ReusableMethods.waitFor(2);
-        us_013accountManagement.scrollDownToElement("1500");
-        int number = random.nextInt(100);
-        String issue = "newissue" + number;
-        clientManagement.title.sendKeys(issue);
-        String issueName = clientManagement.title.getAttribute("value");
-        ReusableMethods.waitFor(2);
-        us_013accountManagement.scrollDownToElement("1500");
-        clientManagement.addButton.click();
-        WebElement newIssue = Driver.getDriver().findElement(By.xpath("//*[contains(text(),'" + issueName + "')]"));
-        System.out.println(newIssue);
-        ReusableMethods.waitFor(5);
-        newIssue.click();
+        clientManagement.newissue.click();
         us_013accountManagement.scrollDownToElement("1800");
         ReusableMethods.waitFor(4);
         clientManagement.attachmentsButton.click();
         String projectPath = System.getProperty("user.dir");
         String filePath1 = "src/test/resources/2014gr0506e.pdf";
         String fullPath1 = projectPath + "/" + filePath1;
-        String filePath2 = "src/test/resources/Todd-Haynes-2017.jpeg";
-        String fullPath2 = projectPath + "/" + filePath2;
-        clientManagement.browsefile.sendKeys(fullPath1 + "\n " + fullPath2);
+        clientManagement.browsefile.sendKeys(fullPath1);
         clientManagement.addedImageFile.click();
         us_013accountManagement.scrollDownToElement("400");
         ReusableMethods.waitFor(3);
@@ -261,7 +247,7 @@ public class US009_ClientManagementEditTest {
     public void presentingIssue_Record_Test() throws AWTException {
         clientManagement.navigateToPresentingIssues();
         ReusableMethods.waitFor(2);
-        clientManagement.newissue3.click();
+        clientManagement.newissue.click();
         us_013accountManagement.scrollDownToElement("1700");
         ReusableMethods.waitFor(3);
         ReusableMethods.clickWithJS(clientManagement.recordButton);

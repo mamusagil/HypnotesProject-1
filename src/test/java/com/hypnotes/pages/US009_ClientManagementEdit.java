@@ -91,7 +91,7 @@ public class US009_ClientManagementEdit {
     @FindBy (css = ".record-status")
     public WebElement recordButton;
     @FindBy (xpath="//a[contains(text(),'newissue')]")
-    public WebElement newissue3;
+    public WebElement newissue;
     @FindBy (css = ".fas.fa-file-audio.note-add-image-btn")
     public WebElement audioFile;
     @FindBy (css = "[id='voiceModalExtractTextButton']")
