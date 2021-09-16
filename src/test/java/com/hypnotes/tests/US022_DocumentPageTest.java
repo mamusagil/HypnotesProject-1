@@ -35,6 +35,7 @@ public class US022_DocumentPageTest extends ReusableMethods {
         String filePath = "src/test/resources/ContactTracing1.pdf";
 
         String fullPath= projectPath + "/" + filePath;
+
         Thread.sleep(3000);
 
         test.selectFileButton.sendKeys(fullPath);
@@ -45,6 +46,7 @@ public class US022_DocumentPageTest extends ReusableMethods {
 
        Thread.sleep(2000);
        ReusableMethods.hover(test.nextButton);
+       test.nextButton.click();
 
 
 
