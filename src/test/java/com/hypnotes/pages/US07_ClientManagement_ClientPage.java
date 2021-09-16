@@ -54,7 +54,7 @@ public class US07_ClientManagement_ClientPage {
     @FindBy(xpath = "//a[@href= '/dashboard']")
     public WebElement clients;
 
-    @FindBy(xpath = "//span[@class = 'ant-comment-content-author-name']")
+    @FindBy(xpath = "//div[@class = 'd-flex align-items-center flex-wrap']")
     public List<WebElement> getClientNames;
 
     // noClientsSavedTest
@@ -69,7 +69,7 @@ public class US07_ClientManagement_ClientPage {
     @FindBy(xpath = "//button[@class='ant-btn ant-btn-primary ant-btn-lg ant-input-search-button']")
     public WebElement getSearchByNameButton;
 
-    @FindBy(xpath = "//h5[@class='ant-typography']")
+    @FindBy(xpath = "//h5[contains(text(),'Ahmet Bartin')]")
     public WebElement afterSearchSavedClient;
 
     //AC-04 Listed clients will be clickable to navigate client details page
@@ -77,8 +77,11 @@ public class US07_ClientManagement_ClientPage {
     @FindBy(xpath = "//span[@class='ant-comment-content-author-name']")
     public List<WebElement> isClientClickable;
 
-    @FindBy(xpath = "//div[@class='left-action-button']//span//a")
+    @FindBy(xpath = "//span[contains(text(),'View Detail')]")
     public WebElement viewDetails;
+
+    @FindBy(xpath="//label[contains(text(),'First Name :')]")
+    public WebElement firstNameVerify;
 
 
     @FindBy(xpath = "//button[@id='editBtn']")

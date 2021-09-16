@@ -61,9 +61,7 @@ public class US07_ClientManagementTest extends ReusableMethods {
         Thread.sleep(2000);
         //test.clients.click(); // to go back to all clients
 
-        Driver.getDriver().navigate().refresh();
-
-
+        //Driver.getDriver().navigate().refresh();
 
         List<String> names = ReusableMethods.getElementsText(test.getClientNames);
         System.out.println(names.get(0));
@@ -82,28 +80,20 @@ public class US07_ClientManagementTest extends ReusableMethods {
         Assert.assertEquals(savedClient,"Ahmet Bartin");
     }
 
-//    @Test // AC-05 user can delete client by clicking Delete button but should see confirmation of deletion popup
-//    public void userCanDeleteClientSeePopup() throws InterruptedException {
-//        test.deleteButtons.get(0).click();
-//        Thread.sleep(1000);
-//        String deleteConfirm = test.deleteConfirmation.getText();
-//
-//        Assert.assertEquals(deleteConfirm,"Are you sure to delete this client?");
-//
-//
-//    }
 
 
     @Test(priority =4) //AC-04 Listed clients will be clickable to navigate client details page
     public void listedClientsWillBeClickable() throws InterruptedException {
 
+        test.viewDetails.click();
+
 //        Actions action = new Actions(Driver.getDriver());
 //        action.moveToElement(test.editButton).perform();
 //        ReusableMethods.hover(test.editButton);
-        test.isClientClickable.get(0).click(); // click
+//        test.isClientClickable.get(0).click(); // click
         Thread.sleep(1000);
-        String editButton = test.editButton.getText();
-        Assert.assertEquals(editButton,"Edit");
+        String firstNameVerify = test.firstNameVerify.getText();
+        Assert.assertEquals(firstNameVerify,"First Name :");
         ReusableMethods.logout();
         Driver.closeDriver();
         ReusableMethods.waitFor(3);
