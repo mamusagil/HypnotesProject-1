@@ -46,7 +46,7 @@ public class US022_DocumentPageTest extends ReusableMethods {
 
        Thread.sleep(2000);
        ReusableMethods.hover(test.nextButton);
-       test.nextButton.click();
+//       test.nextButton.click();
 
 
 
