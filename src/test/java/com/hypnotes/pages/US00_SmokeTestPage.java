@@ -5,6 +5,7 @@ import com.hypnotes.utilities.ReusableMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class US00_SmokeTestPage {
  public US00_SmokeTestPage() {
@@ -99,7 +100,8 @@ public class US00_SmokeTestPage {
  public WebElement blockExtraTimeButton;
  @FindBy(xpath= "(//input[@id='blockBefore'])[2]")
  public WebElement packageBlockBeforeBox;
- @FindBy(xpath= "//input[@id='afterBlock']")
+//(//input[@id='blockAfter']/parent::div/parent::div/parent::div/parent::div/parent::div/parent::div/*)[4]
+ @FindBy(xpath= "(//input[@id='blockAfter'])[2]")
  public WebElement packageBlockAfterBox;
  @FindBy(xpath= "(//button[@id='paymentRequired'])[2]")
  public WebElement packagePaymentRequiredbutton;
@@ -113,8 +115,47 @@ public class US00_SmokeTestPage {
  public WebElement packageSaveButton;
  @FindBy(xpath= "  //div[contains(text(),'NewPackage1')]/parent::div/parent::div/parent::div/parent::div/ul/li[2]")
  public WebElement newPackageDeleteButton;
-
  @FindBy(xpath= " //span[contains(text(),'OK')]")
  public WebElement packageDeleteOKButton;
+
+ //Appointment Package1
+ @FindBy(xpath= "//div[contains(text(),'Package1')]")
+ public WebElement package1Button;
+ @FindBy(xpath= "//td[@title='2021-09-30']")
+ public WebElement dateButton;
+ @FindBy(xpath= "//span[contains(text(),'08:05')]")
+ public WebElement time0800Button;
+ @FindBy(xpath= "//span[contains(text(),'Yes')]")
+ public WebElement appointmentYesButton;
+ @FindBy(id= "basic_firstName")
+ public WebElement appointmentNameBox;
+ @FindBy(id= "basic_lastName")
+ public WebElement appointmentLastNameBox;
+ @FindBy(id= "basic_email")
+ public WebElement appointmentEmailBox;
+ @FindBy(id= "basic_phone")
+ public WebElement appointmentPhoneBox;
+ @FindBy(xpath= "//div[@class='ant-select-selection-overflow']")
+ public WebElement majorConcernsDropDown;
+ @FindBy(xpath= "//div[@title='Weight Loss Program']")
+ public WebElement weightLossButton;
+ @FindBy(xpath= "//span[contains(text(),'Submit')]")
+ public WebElement appointmentSubmitButton;
+ @FindBy(xpath= "//span[contains(text(),'Next')]")
+ public WebElement appointmentNextButton;
+ @FindBy(xpath= " //button[@aria-label='Close']")
+ public WebElement closeButton;
+
+ //Check For Appoinment
+
+ @FindBy(xpath= "//span[contains(text(),'Calendar')]")
+ public WebElement calendarButton;
+ @FindBy(xpath= " //a[contains(text(),'Meetings')]")
+ public WebElement meetingsButton;
+ @FindBy(xpath= "(//div[contains(text(),'30')])[2]")
+ public WebElement dateBox;
+//(//span[contains(text(),'08:05 - Semra')])[1]
+ @FindBy(xpath= "(//span[@class='ant-badge ant-badge-status ant-badge-not-a-wrapper'])[20]")
+ public WebElement semra08text;
 
 }

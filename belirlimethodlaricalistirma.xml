@@ -2,7 +2,7 @@
 <suite name="Suite - belirli methodlar">
     <test name="Test - method test">
         <classes>
-            <class name="com.hypnotes.tests.US00_SmoketestTest">
+            <class name="com.hypnotes.tests.US00_Smoketest1Test">
                 <methods>
                     <!-- Method eklemek için "include" -->
                     <!-- Sadece include ettiğimiz methodlar çalışır -->
