@@ -1,5 +1,6 @@
 package com.hypnotes.tests;
 
+import com.github.javafaker.Faker;
 import com.hypnotes.pages.US00_SmokeTestPage;
 import com.hypnotes.utilities.ConfigurationReader;
 import com.hypnotes.utilities.Driver;
@@ -17,7 +18,10 @@ public void loginTest() throws InterruptedException {
         US00DenemePage.loginButton.click();
 
         Thread.sleep(3000);
-        US00DenemePage.emailBox.sendKeys(ConfigurationReader.getProperty("semra-email"));
+
+        Faker faker=new Faker();
+
+        US00DenemePage.emailBox.sendKeys(faker.internet().emailAddress());
         Thread.sleep(3000);
         US00DenemePage.passwordBox.sendKeys(ConfigurationReader.getProperty("semra-password"));
         Thread.sleep(3000);
@@ -40,5 +44,7 @@ public void loginTest() throws InterruptedException {
         reusableMethods.login(ConfigurationReader.getProperty("semra-email"),ConfigurationReader.getProperty("semra-password"));
         // methodla logou yapma--objeyle alma
         reusableMethods.logout();
+
+
     }
 }

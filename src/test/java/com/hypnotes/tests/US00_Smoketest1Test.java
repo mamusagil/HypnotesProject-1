@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class US00_SmoketestTest {
+public class US00_Smoketest1Test extends ReusableMethods{
     US00_SmokeTestPage us00DenemePage =new US00_SmokeTestPage();
    // ReusableMethods reusableMethods=new ReusableMethods();
     @BeforeTest
@@ -58,7 +58,9 @@ public class US00_SmoketestTest {
     String projectPath = System.getProperty("user.dir");
     System.out.println("projectPath = " + projectPath);
     String filePath = "src/test/resources/Todd-Haynes-2017.jpeg";
-    String fullPath = projectPath + "/" + filePath;
+
+    String fullPath= projectPath + "/" + filePath;
+
     System.out.println(fullPath);
 
     us00DenemePage.imgBox.sendKeys(fullPath);
@@ -115,9 +117,12 @@ public class US00_SmoketestTest {
         us00DenemePage.paymentRequiredButton.click();
         us00DenemePage.descriptionBox.sendKeys("NewCategory1 Description");
         us00DenemePage.saveButton.click();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
         ReusableMethods.waitFor(2);
         System.out.println("New Category is Added");
-
+        ReusableMethods.waitFor(2);
         us00DenemePage.categoryDeleteButton.click();
         ReusableMethods.waitFor(1);
         ReusableMethods.clickWithJS(us00DenemePage.categoryDeleteOKButton);
@@ -137,6 +142,7 @@ public class US00_SmoketestTest {
         us00DenemePage.packageDuration30Minutes.click();
         us00DenemePage.blockExtraTimeButton.click();
         us00DenemePage.packageBlockBeforeBox.sendKeys("5");
+        ReusableMethods.waitFor(2);
         us00DenemePage.packageBlockAfterBox.sendKeys("5");
         us00DenemePage.packagePaymentRequiredbutton.click();
         us00DenemePage.totalSessionsBox.sendKeys("4");
@@ -150,6 +156,7 @@ public class US00_SmoketestTest {
         us00DenemePage.packageDeleteOKButton.click();
         ReusableMethods.waitFor(2);
         System.out.println("New Package is Deleted");
+        logout();
     }
 
 
