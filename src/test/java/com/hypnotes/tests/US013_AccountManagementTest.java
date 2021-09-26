@@ -43,7 +43,7 @@ public class US013_AccountManagementTest {
         String message = us013_accountManagement.toastMessage.getText();
         System.out.println(message);
         ReusableMethods.waitFor(2);
-        Assert.assertEquals(message, "Verification code is successfully sent your phone.");
+        Assert.assertEquals(message, "We already sent a code to your phone.");
         Driver.getDriver().navigate().refresh();
     }
     @Test(priority = 4)

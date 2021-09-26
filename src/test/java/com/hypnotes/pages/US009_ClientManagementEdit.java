@@ -215,7 +215,7 @@ public class US009_ClientManagementEdit {
         inputBoxes.get(9).sendKeys(zipCode);
         ReusableMethods.waitFor(2);
         String projectPath = System.getProperty("user.dir");
-        String filePath1 = "src/test/resources/img.png";
+        String filePath1 = "src/test/resources/2014gr0506e.pdf";
         String fullPath = projectPath+"/"+filePath1;
         browseFile.sendKeys(fullPath);
         String filePath2 = "src/test/resources/3-percentages-ws.pdf";
