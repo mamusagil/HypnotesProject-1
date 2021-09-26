@@ -8,6 +8,8 @@ import org.apache.hc.core5.reactor.Command;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,6 +18,8 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.geom.RectangularShape;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -24,41 +28,49 @@ public class US009_ClientManagementEditTest {
     US009_ClientManagementEdit clientManagement = new US009_ClientManagementEdit();
     US013_AccountManagement us_013accountManagement = new US013_AccountManagement();
     Random random = new Random();
-     WebDriver driver;
-     @BeforeMethod
-             public void login(){
-         Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
-         us_013accountManagement.loginMethod();
-     }
-    @AfterMethod
-    public void logout(){ Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
-        us_013accountManagement.logoutMethod();
-    }
-        @Test(priority = 1)
-    public void TestClientManagement() throws InterruptedException {
-//         ReusableMethods.waitFor(3);
-//       us_013accountManagement.viewButton.click();
-//        ReusableMethods.clickWithJS(us_013accountManagement.agreementButton1);
-//        us_013accountManagement.nextButton.click();
-//        us_013accountManagement.scrollDownToElement("1500");
-//        ReusableMethods.waitFor(4);
-//       ReusableMethods.clickWithJS(us_013accountManagement.agreementButton2);
-//        ReusableMethods.waitFor(3);
-//        ReusableMethods.clickWithJS(us_013accountManagement.submitButton);
-        clientManagement.navigateToClientTabs();
-        us_013accountManagement.scrollDownToElement("1500");
-        Thread.sleep(2000);
-        clientManagement.editButton.click();
-        ReusableMethods.waitFor(3);
-        clientManagement.inputValidValues("Azimi", "Gencaev", "45654654654", "Student","hfdyy@gmail.com"," dyt street Uk","57666");
-        ReusableMethods.waitFor(4);
-        us_013accountManagement.scrollDownToElement("1500");
-        ReusableMethods.clickWithJS(clientManagement.saveButton);
-        Assert.assertEquals(clientManagement.messageUpdated.getText(), "Client Info has been successfully updated!✅");
-        ReusableMethods.waitFor(3);
+    WebDriver driver;
+
+    @BeforeMethod
+    public void login() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
+        us_013accountManagement.loginMethod();
     }
 
-//    @Test(priority = 2)
+    @AfterMethod
+    public void logout() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
+        us_013accountManagement.logoutMethod();
+    }
+
+    @Test(priority = 1)
+    public void editClientTest() throws InterruptedException {
+        clientManagement.navigateToClientTabs();
+        us_013accountManagement.scrollDownToElement("1500");
+        ReusableMethods.waitFor(4);
+        clientManagement.editButton.click();
+        us_013accountManagement.scrollDownToElement("-1400");
+        System.out.println(clientManagement.inputBoxes.size());
+        clientManagement.inputValidValues("Azimi", "Gencaev", "45654654654", "Student", "hfdyy@gmail.com", "United Kingdom", "xyz street Happy king way", "Massachusetts", "Abington", "45454");
+        ReusableMethods.waitFor(3);
+        clientManagement.timeZone.click();
+        ReusableMethods.waitFor(10);
+        Actions action = new Actions(Driver.getDriver());
+        action.sendKeys(Keys.ARROW_UP).sendKeys(Keys.ENTER).build().perform();
+        ReusableMethods.waitFor(1);
+        ReusableMethods.clickWithJS(clientManagement.saveButton);
+        Assert.assertEquals(clientManagement.messageUpdated.getText(), "Client Info has been successfully updated!✅");
+        ReusableMethods.waitFor(1);
+    }
+
+    @Test(priority = 2)
+    public void scheduleAnappointment() throws InterruptedException {
+
+//        us_013accountManagement.scrollDownToElement("1500");
+//        ReusableMethods.waitFor(4);
+
+    }
+
+    //    @Test(priority = 2)
 //    public void editName_SUrnamewithInValid_Credentials() throws InterruptedException {
 //       // Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link"));
 //       // us_013accountManagement.loginByLinkedinMethod();
@@ -133,7 +145,7 @@ public class US009_ClientManagementEditTest {
 //        clientManagement.inputValidValues("Azimi", "Gencaev", "45654654654", "Student");
 //        Assert.assertTrue(clientManagement.cancelButton());
 //
-    @Test(priority = 2)
+    @Test(priority = 3)
     public void presentingIssue_Attachments_Test() {
         clientManagement.navigateToPresentingIssues();
         ReusableMethods.waitFor(2);
@@ -164,20 +176,20 @@ public class US009_ClientManagementEditTest {
         clientManagement.deleteIssue.click();
         ReusableMethods.waitFor(3);
         clientManagement.no.click();
-       int numberofissuesBeforedelete=clientManagement.issueArray.size();
+        int numberofissuesBeforedelete = clientManagement.issueArray.size();
         System.out.println(numberofissuesBeforedelete);
         clientManagement.deleteIssue.click();
-       ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(3);
         clientManagement.yes.click();
         ReusableMethods.waitFor(2);
         Driver.getDriver().navigate().refresh();
-       int numberofissuesAfterdelete=clientManagement.issueArray.size();
+        int numberofissuesAfterdelete = clientManagement.issueArray.size();
         System.out.println(numberofissuesAfterdelete);
-        Assert.assertFalse(numberofissuesAfterdelete==numberofissuesBeforedelete,"Issue not deleted");
+        Assert.assertFalse(numberofissuesAfterdelete == numberofissuesBeforedelete, "Issue not deleted");
 
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void presentingIssue_Attachments_Extract_File_intoText_SentToClient_Test() {
         clientManagement.navigateToPresentingIssues();
         ReusableMethods.waitFor(2);
@@ -210,14 +222,14 @@ public class US009_ClientManagementEditTest {
         ReusableMethods.clickWithJS(clientManagement.copyButton);
         Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Text copied to your clipboard!");
         ReusableMethods.waitFor(10);
-       us_013accountManagement.scrollDownToElement("400");
+        us_013accountManagement.scrollDownToElement("400");
         ReusableMethods.waitFor(2);
         ReusableMethods.clickWithJS(clientManagement.sendToClient);
-        Assert.assertEquals(clientManagement.SentToClientMessage.getText(),"Sent to Client");
+        Assert.assertEquals(clientManagement.SentToClientMessage.getText(), "Sent to Client");
 
-     }
+    }
 
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void presentingIssue_Attachments_Delete_File_Test() {
         clientManagement.navigateToPresentingIssues();
         ReusableMethods.waitFor(2);
@@ -243,49 +255,85 @@ public class US009_ClientManagementEditTest {
         Assert.assertFalse(beforeDelete == afterDelete, "file is not deleted");
     }
 
-    @Test(priority = 5)
-    public void presentingIssue_Record_Test() throws AWTException {
-        clientManagement.navigateToPresentingIssues();
-        ReusableMethods.waitFor(2);
-        clientManagement.newissue.click();
-        us_013accountManagement.scrollDownToElement("1700");
-        ReusableMethods.waitFor(3);
-        ReusableMethods.clickWithJS(clientManagement.recordButton);
-        ReusableMethods.waitFor(10);
-        ReusableMethods.clickWithJS(clientManagement.recordButton);
-      //  JavascriptExecutor jse = (JavascriptExecutor)driver;
-     //   jse.executeScript("document.querySelector('#audioElement').play();");
-        ReusableMethods.waitFor(2);
-        ReusableMethods.clickWithJS(clientManagement.voiceExtractText);
-        ReusableMethods.waitFor(4);
-        clientManagement.copyButtonVoice.click();
-        Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(),"Text copied to your clipboard!");
-        ReusableMethods.waitFor(2);
-        int beforeDelete = clientManagement.numberofVoicefilesCreated.size();
-        System.out.println(clientManagement.numberofVoicefilesCreated.size());
-        clientManagement.voiceDeleteButton.click();
-        clientManagement.deleteExtractedMessageYes.click();
-        ReusableMethods.waitFor(2);
-        Driver.getDriver().navigate().refresh();
-        int afterDelete = clientManagement.numberofVoicefilesCreated.size();
-        System.out.println(clientManagement.numberofVoicefilesCreated.size());
-        Assert.assertFalse(beforeDelete == afterDelete, "file is not deleted");
-
-//        ReusableMethods.clickWithJS(clientManagement.recordButton);
+//    @Test(priority = 6)
+//    public void presentingIssue_Record_Test() throws AWTException {
+//        clientManagement.navigateToPresentingIssues();
 //        ReusableMethods.waitFor(2);
-//        ReusableMethods.clickWithJS(clientManagement.recordButton);
-//        ReusableMethods.waitFor(5);
-//        ReusableMethods.clickWithJS(clientManagement.recordButton);
-//        ReusableMethods.waitFor(5);
-//        JavascriptExecutor jse = (JavascriptExecutor)driver;
-//        jse.executeScript("clientManagement.audioFile.play();");
+//        clientManagement.newissue.click();
+//        us_013accountManagement.scrollDownToElement("1700");
 //        ReusableMethods.waitFor(3);
+//        ReusableMethods.clickWithJS(clientManagement.recordButton);
+//        ReusableMethods.waitFor(10);
+//        ReusableMethods.clickWithJS(clientManagement.recordButton);
+//        //  JavascriptExecutor jse = (JavascriptExecutor)driver;
+//        //   jse.executeScript("document.querySelector('#audioElement').play();");
+//        ReusableMethods.waitFor(2);
+//        ReusableMethods.clickWithJS(clientManagement.voiceExtractText);
+//        ReusableMethods.waitFor(4);
+//        clientManagement.copyButtonVoice.click();
+//        Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Text copied to your clipboard!");
+//        ReusableMethods.waitFor(2);
+//        int beforeDelete = clientManagement.numberofVoicefilesCreated.size();
+//        System.out.println(clientManagement.numberofVoicefilesCreated.size());
+//        clientManagement.voiceDeleteButton.click();
+//        clientManagement.deleteExtractedMessageYes.click();
+//        ReusableMethods.waitFor(2);
+//        Driver.getDriver().navigate().refresh();
+//        int afterDelete = clientManagement.numberofVoicefilesCreated.size();
+//        System.out.println(clientManagement.numberofVoicefilesCreated.size());
+//        Assert.assertFalse(beforeDelete == afterDelete, "file is not deleted");
+//
+////        ReusableMethods.clickWithJS(clientManagement.recordButton);
+////        ReusableMethods.waitFor(2);
+////        ReusableMethods.clickWithJS(clientManagement.recordButton);
+////        ReusableMethods.waitFor(5);
+////        ReusableMethods.clickWithJS(clientManagement.recordButton);
+////        ReusableMethods.waitFor(5);
+////        JavascriptExecutor jse = (JavascriptExecutor)driver;
+////        jse.executeScript("clientManagement.audioFile.play();");
+////        ReusableMethods.waitFor(3);
+//
+////        Robot robot = new Robot();
+////        robot.mouseMove(630, 420); // move mouse point to specific location
+////        robot.delay(1500);        // delay is to make code wait for mentioned milliseconds before executing next step
+////        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK); // press left click
 
-//        Robot robot = new Robot();
-//        robot.mouseMove(630, 420); // move mouse point to specific location
-//        robot.delay(1500);        // delay is to make code wait for mentioned milliseconds before executing next step
-//        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK); // press left click
+  //  }
 
-
+    @Test(priority = 7)
+    public void creatingNew_New_SessionsTest() throws InterruptedException {
+        clientManagement.navigateToSesionsTabs();
+        clientManagement.addNewsesion.click();
+        Assert.assertEquals(clientManagement.issueAddedMessage.getText(), "Session is successfully added.");
+        ReusableMethods.waitForClickablility(clientManagement.newSession, 15);
+        ReusableMethods.clickWithJS(clientManagement.newSession);
+        ReusableMethods.waitFor(3);
+        us_013accountManagement.scrollDownToElement("300");
+        ReusableMethods.waitForClickablility(clientManagement.calendarInput,15);
+        clientManagement.calendarInput.click();
+       ReusableMethods.waitForClickablility(clientManagement.specificDate,15);
+        clientManagement.specificDate.click();
+        clientManagement.issueToAdd();
+        ReusableMethods.waitFor(5);
+        Actions action = new Actions(Driver.getDriver());
+        action.sendKeys(Keys.ENTER).build().perform();
+        Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Problem is successfully linked.");
+        ReusableMethods.waitFor(10);
+        us_013accountManagement.scrollDownToElement("200");
+        ReusableMethods.waitForVisibility(clientManagement.keyPointsTextArea1,10);
+        clientManagement.keyPointsTextArea1.sendKeys("It can be better");
+        us_013accountManagement.scrollDownToElement("400");
+      //  Assert.assertEquals(clientManagement.textCopiedToClipBoard,"Note updated");
+        ReusableMethods.waitFor(10);
+        ReusableMethods.waitForVisibility(clientManagement.afterThoughtsTextArea,10);
+        clientManagement.afterThoughtsTextArea.sendKeys("You are very good condition");
+        us_013accountManagement.scrollDownToElement("200");
+       // Assert.assertEquals(clientManagement.textCopiedToClipBoard,"After thoughts updated");
+        ReusableMethods.waitFor(10);
+        ReusableMethods.waitForVisibility(clientManagement.keyPointsTextArea2,10);
+        clientManagement.keyPointsTextArea2.sendKeys("you are progressing ");
+        us_013accountManagement.scrollDownToElement("200");
+       // Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Note updated");
+        ReusableMethods.waitFor(10);
     }
 }
