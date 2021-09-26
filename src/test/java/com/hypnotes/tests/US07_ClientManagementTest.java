@@ -95,7 +95,7 @@ public class US07_ClientManagementTest extends ReusableMethods {
         String firstNameVerify = test.firstNameVerify.getText();
         Assert.assertEquals(firstNameVerify,"First Name :");
         ReusableMethods.logout();
-        // Driver.closeDriver();
+        Driver.closeDriver();
         ReusableMethods.waitFor(3);
     }
 
