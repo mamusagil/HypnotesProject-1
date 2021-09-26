@@ -3,11 +3,13 @@ package com.hypnotes.pages;
 import com.hypnotes.utilities.Driver;
 
 import com.hypnotes.utilities.ReusableMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class US009_ClientManagementEdit {
@@ -114,13 +116,52 @@ public class US009_ClientManagementEdit {
     public WebElement sendToClient;
     @FindBy (xpath="//div[@class='toast-message']")
     public WebElement SentToClientMessage;
+    @FindBy (xpath="//input[@id='State']")
+    public WebElement stateInput;
+    @FindBy (xpath="//input[@id='City']")
+    public WebElement cityInput;
+    @FindBy (className="ant-select-selection-item")
+    public WebElement timeZone;
+    @FindBy (xpath="//button[@class='ant-btn btn btn-primary']")
+    public WebElement addNewDocument;
+    @FindBy (xpath="//button[@class='ant-btn ant-btn-button btn btn-primary ml-1 d-flex justify-content-center align-items-center']")
+    public WebElement buttonUpload;
+    @FindBy (xpath="(//span[contains(text(),'Schedule An Appointment')])[1]")
+    public WebElement scheduleAppointment;
+    @FindBy (xpath="//p[contains(text(),'Sessions')]")
+    public WebElement sessionsTab;
+    @FindBy (xpath="//a[contains(text(),'Add new session')]")
+    public WebElement addNewsesion;
+    @FindBy (xpath="(//div[@class='col-12']/a)[1]")
+    public WebElement newSession;
+    @FindBy (xpath="//div[@class='ant-picker-input']")
+    public WebElement calendarInput;
+    @FindBy (xpath="//div[@class='ant-picker single-input rounded col-12 ant-picker-focused']")
+    public WebElement calendarInputBox;
+    @FindBy (xpath="//td[@title='2021-09-29']")
+    public WebElement specificDate;
+    @FindBy (xpath="//button[@class='d-inline-flex btn btn-primary btn-sm mx-1 my-1'][1]")
+    public WebElement issueToAdd;
+    @FindBy (xpath="(//textarea[@class='single-textarea col-12 rounded'])[1]")
+    public WebElement keyPointsTextArea1;
+    @FindBy (xpath="(//textarea[@class='single-textarea col-12 rounded'])[2]")
+    public WebElement keyPointsTextArea2;
+    @FindBy (id="afterThoughtsTextArea")
+    public WebElement afterThoughtsTextArea;
+
+
 
 
     US013_AccountManagement us013_accountManagement= new US013_AccountManagement();
 
 
-
-
+    public void issueToAdd(){
+        for (int i = 1; i <3 ; i++) {
+            WebElement newIssue = Driver.getDriver().findElement(By.xpath("//button[@class='d-inline-flex btn btn-primary btn-sm mx-1 my-1']["+i+"]"));
+        newIssue.click();
+        ReusableMethods.waitFor(2);
+        }
+    }
    public void navigateToClientTabs() throws InterruptedException {
        ReusableMethods.waitForClickablility(clientsButton,3);
       ReusableMethods.clickWithJS(clientsButton);
@@ -130,7 +171,25 @@ public class US009_ClientManagementEdit {
        ReusableMethods.clickWithJS(clientInfo);
 
    }
-    public void inputValidValues(String name, String surname ,String telephone,String Occupation,String email,String address ,String zipCode )  {
+    public void navigateToSchedule() throws InterruptedException {
+        ReusableMethods.waitForClickablility(clientsButton,3);
+        ReusableMethods.clickWithJS(clientsButton);
+        ReusableMethods.waitForClickablility(scheduleAppointment,3);
+        ReusableMethods.clickWithJS(scheduleAppointment);
+        ReusableMethods.waitForClickablility(clientInfo,3);
+        ReusableMethods.clickWithJS(clientInfo);
+
+    }
+    public void navigateToSesionsTabs() throws InterruptedException {
+        ReusableMethods.waitForClickablility(clientsButton,3);
+        ReusableMethods.clickWithJS(clientsButton);
+        ReusableMethods.waitForClickablility(viewDetail,3);
+        ReusableMethods.clickWithJS(viewDetail);
+        ReusableMethods.waitForClickablility(sessionsTab,3);
+        ReusableMethods.clickWithJS(sessionsTab);
+
+    }
+    public void inputValidValues(String name, String surname ,String telephone,String Occupation,String email,String country,String address ,String state,String city,String zipCode)  {
         inputBoxes.get(0).clear();
         inputBoxes.get(0).sendKeys(name);
         inputBoxes.get(1).clear();
@@ -142,15 +201,33 @@ public class US009_ClientManagementEdit {
         inputBoxes.get(4).clear();
         inputBoxes.get(4).sendKeys(email);
         inputBoxes.get(5).clear();
-        inputBoxes.get(5).sendKeys(address);
+        inputBoxes.get(5).sendKeys(country);
+        us013_accountManagement.scrollDownToElement("1500");
+        ReusableMethods.waitFor(2);
         inputBoxes.get(6).clear();
-        inputBoxes.get(6).sendKeys(zipCode);
+        inputBoxes.get(6).sendKeys(address);
+        inputBoxes.get(7).clear();
+        inputBoxes.get(7).sendKeys(state);
+        inputBoxes.get(8).clear();
+        inputBoxes.get(8).sendKeys(city);
+        ReusableMethods.waitFor(2);
+        inputBoxes.get(9).clear();
+        inputBoxes.get(9).sendKeys(zipCode);
+        ReusableMethods.waitFor(2);
         String projectPath = System.getProperty("user.dir");
-        String filePath = "src/test/resources/Todd-Haynes-2017.jpeg";
-        String fullPath = projectPath+"/"+filePath;
+        String filePath1 = "src/test/resources/img.png";
+        String fullPath = projectPath+"/"+filePath1;
         browseFile.sendKeys(fullPath);
+        String filePath2 = "src/test/resources/3-percentages-ws.pdf";
+        String fullPath2= projectPath+"/"+filePath2;
+        ReusableMethods.waitFor(5);
+        addNewDocument.sendKeys(fullPath2);
+        ReusableMethods.waitFor(3);
+        ReusableMethods.clickWithJS(buttonUpload);
+
 
     }
+
     public void invalidValues(String name, String surname ,String telephone,String Occupation)  {
         inputBoxes.get(0).clear();
         inputBoxes.get(0).sendKeys(name);
@@ -191,5 +268,14 @@ public class US009_ClientManagementEdit {
         ReusableMethods.clickWithJS(presentingIssue);
         ReusableMethods.waitForClickablility(addNewProblem ,3);
         ReusableMethods.clickWithJS(addNewProblem);
+    }
+    public  String futureDate(){
+        Calendar now = Calendar.getInstance();
+        // add days to current date using Calendar.add method
+        now.add(Calendar.MONTH, 2);
+        String futureDate=(now.get(Calendar.MONTH) ) + "-"
+                + now.get(Calendar.DATE) + "-" + now.get(Calendar.YEAR);
+        System.out.println(futureDate);
+        return futureDate;
     }
 }

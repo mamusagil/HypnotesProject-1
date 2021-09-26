@@ -95,10 +95,6 @@ public class US013_AccountManagement {
     public WebElement closeButton;
 
     public void loginMethod() {
-        ReusableMethods.waitForClickablility(Login, 10);
-        ReusableMethods.clickWithJS(Login);
-        ReusableMethods.waitForVisibility(inputEmail, 4);
-        ReusableMethods.waitForVisibility(inputPassword, 4);
         inputEmail.clear();
         inputPassword.clear();
         String username = ConfigurationReader.getProperty("ybalkas-email");
