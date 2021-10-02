@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class US00_SmokeTestPage {
  public US00_SmokeTestPage() {
   PageFactory.initElements(Driver.getDriver(), this);
@@ -121,10 +123,42 @@ public class US00_SmokeTestPage {
  //Appointment Package1
  @FindBy(xpath= "//div[contains(text(),'Package1')]")
  public WebElement package1Button;
- @FindBy(xpath= "//td[@title='2021-09-30']")
- public WebElement dateButton;
- @FindBy(xpath= "//span[contains(text(),'08:05')]")
- public WebElement time0800Button;
+ @FindBy(xpath= "//span[@class='ant-select-selection-item']")
+ public WebElement yearButton;
+
+ @FindBy(xpath= "//div[@class='rc-virtual-list-holder-inner']")
+ public List<WebElement> dropDownYear;
+
+ @FindBy(xpath= "//div[@class='rc-virtual-list-scrollbar-thumb rc-virtual-list-scrollbar-thumb-moving']")
+ public WebElement scrollButton;
+
+ @FindBy(xpath = " //div[@label='2021']")
+ public WebElement year2021;
+
+ @FindBy(xpath = " //div[@label='2025']")
+ public WebElement year2025;
+
+ @FindBy(xpath = " //span[contains(text(),'Current Time')]")
+ public WebElement currentTime;
+
+ @FindBy(xpath = "  //div[@label='Sep']")
+ public WebElement monthSep;
+
+ @FindBy(xpath= "(//span[@class='ant-select-selection-item'])[2]")
+ public WebElement monthButton;
+
+
+
+ @FindBy(xpath= "(//div[contains(text(),'23')])[2]")
+ public WebElement day30;
+
+ @FindBy(xpath= "(//div[@class='ant-picker-calendar-date-content'])[24]")
+ public WebElement day23;
+
+
+ @FindBy(xpath= "//span[contains(text(),'06:55 AM')]")
+ public WebElement time0655Button;
+
  @FindBy(xpath= "//span[contains(text(),'Yes')]")
  public WebElement appointmentYesButton;
  @FindBy(id= "basic_firstName")
@@ -152,10 +186,15 @@ public class US00_SmokeTestPage {
  public WebElement calendarButton;
  @FindBy(xpath= " //a[contains(text(),'Meetings')]")
  public WebElement meetingsButton;
- @FindBy(xpath= "(//div[contains(text(),'30')])[2]")
- public WebElement dateBox;
+ @FindBy(xpath= "//div[@class='ant-collapse-header']")
+ public WebElement meetInfoButton;
 //(//span[contains(text(),'08:05 - Semra')])[1]
- @FindBy(xpath= "(//span[@class='ant-badge ant-badge-status ant-badge-not-a-wrapper'])[20]")
- public WebElement semra08text;
+ @FindBy(xpath= "//span[contains(text(),'Cancel Appointment')]")
+ public WebElement cancelAppointmentButton;
+ @FindBy(xpath= "//span[contains(text(),'Yes')]")
+ public WebElement cancelAppointmentYesButton;
+
+ @FindBy(xpath= "//span[@class='anticon anticon-close']")
+ public WebElement closeMeetInfoButton;
 
 }
