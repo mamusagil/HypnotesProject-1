@@ -241,7 +241,7 @@ public class US009_ClientManagementEditTest {
         String filePath1 = "src/test/resources/2014gr0506e.pdf";
         String fullPath1 = projectPath + "/" + filePath1;
         clientManagement.browsefile.sendKeys(fullPath1);
-        clientManagement.addedImageFile.click();
+         clientManagement.addedImageFile.click();
         us_013accountManagement.scrollDownToElement("400");
         ReusableMethods.waitFor(3);
         int beforeDelete = clientManagement.numberoffilesCreated.size();
@@ -314,10 +314,11 @@ public class US009_ClientManagementEditTest {
        ReusableMethods.waitForClickablility(clientManagement.specificDate,15);
         clientManagement.specificDate.click();
         clientManagement.issueToAdd();
+        Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Problem is successfully linked.");
         ReusableMethods.waitFor(5);
         Actions action = new Actions(Driver.getDriver());
         action.sendKeys(Keys.ENTER).build().perform();
-        Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Problem is successfully linked.");
+       // Assert.assertEquals(clientManagement.textCopiedToClipBoard.getText(), "Problem is successfully linked.");
         ReusableMethods.waitFor(10);
         us_013accountManagement.scrollDownToElement("200");
         ReusableMethods.waitForVisibility(clientManagement.keyPointsTextArea1,10);

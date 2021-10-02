@@ -43,8 +43,13 @@ public class US013_AccountManagementTest {
         String message = us013_accountManagement.toastMessage.getText();
         System.out.println(message);
         ReusableMethods.waitFor(2);
-        Assert.assertEquals(message, "We already sent a code to your phone.");
+        if(message.equals("We already sent a code to your phone.")){
+            Assert.assertEquals(message, "We already sent a code to your phone.");
+        } else{
+            Assert.assertEquals(message, "Verification code is successfully sent your phone.");
+        }
         Driver.getDriver().navigate().refresh();
+
     }
     @Test(priority = 4)
     public void wrongSecurityCodeTest() throws InterruptedException {
@@ -63,7 +68,7 @@ public class US013_AccountManagementTest {
         Assert.assertEquals(message, "Your security code has expired or wrong!");
         Driver.getDriver().navigate().refresh();
     }
-    @Test(priority = 6)
+    @Test(priority = 5)
     public void timeElapsedSecurityCodeTest() throws InterruptedException {
         us013_accountManagement.verificationBtn.click();
         ReusableMethods.waitForVisibility(us013_accountManagement.phoneInputBox,3);
@@ -74,20 +79,21 @@ public class US013_AccountManagementTest {
         System.out.println("message = " + message);
         Assert.assertEquals(message, "Given time exceed for verification. Please try again...");
         us013_accountManagement.closeButton.click();
-
+        Driver.getDriver().navigate().refresh();
     }
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void cancelPhoneVerificationTest() throws InterruptedException {
+        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
+        us013_accountManagement.loginMethod();
         us013_accountManagement.settings.click();
         us013_accountManagement.verificationBtn.click();
         us013_accountManagement.phoneInputBox.sendKeys("1423412330");
         ReusableMethods.waitForClickablility(us013_accountManagement.sendVerificationButton,4);
         us013_accountManagement.sendVerificationButton.click();
-        ReusableMethods.waitForClickablility(us013_accountManagement.cancelBtn,3);
+        ReusableMethods.waitForClickablility(us013_accountManagement.cancelBtn,5);
         us013_accountManagement.cancelBtn.click();
         Assert.assertTrue(us013_accountManagement.sendVerificationButton.isEnabled());
-        Driver.getDriver().navigate().refresh();
-        Thread.sleep(2000);
+
     }
 }
 
