@@ -241,6 +241,7 @@ public class US009_ClientManagementEditTest {
         String filePath1 = "src/test/resources/2014gr0506e.pdf";
         String fullPath1 = projectPath + "/" + filePath1;
         clientManagement.browsefile.sendKeys(fullPath1);
+        ReusableMethods.waitFor(4);
          clientManagement.addedImageFile.click();
         us_013accountManagement.scrollDownToElement("400");
         ReusableMethods.waitFor(3);
