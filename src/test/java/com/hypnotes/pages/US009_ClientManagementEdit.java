@@ -149,19 +149,19 @@ public class US009_ClientManagementEdit {
     @FindBy (id="afterThoughtsTextArea")
     public WebElement afterThoughtsTextArea;
 
-
-
+    // Expected :We already sent a code to your phone.
+    // Actual   :Verification code is successfully sent your phone.
 
     US013_AccountManagement us013_accountManagement= new US013_AccountManagement();
 
 
     public void issueToAdd(){
-        for (int i = 1; i <3 ; i++) {
+        for (int i = 1; i <3 ; i++){
             WebElement newIssue = Driver.getDriver().findElement(By.xpath("//button[@class='d-inline-flex btn btn-primary btn-sm mx-1 my-1']["+i+"]"));
-        newIssue.click();
-        ReusableMethods.waitFor(2);
+            newIssue.click();
+            ReusableMethods.waitFor(2);
         }
-    }
+        }
    public void navigateToClientTabs() throws InterruptedException {
        ReusableMethods.waitForClickablility(clientsButton,3);
       ReusableMethods.clickWithJS(clientsButton);
