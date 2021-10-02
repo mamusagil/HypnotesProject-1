@@ -156,6 +156,9 @@ public class US00_Smoketest1Test extends ReusableMethods{
         us00DenemePage.packageDeleteOKButton.click();
         ReusableMethods.waitFor(2);
         System.out.println("New Package is Deleted");
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_UP).perform();
+        ReusableMethods.waitFor(1);
         logout();
     }
 
