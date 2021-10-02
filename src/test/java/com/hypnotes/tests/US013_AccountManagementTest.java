@@ -83,14 +83,12 @@ public class US013_AccountManagementTest {
     }
     @Test(priority = 6)
     public void cancelPhoneVerificationTest() throws InterruptedException {
-        Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkYB"));
-        us013_accountManagement.loginMethod();
         us013_accountManagement.settings.click();
         us013_accountManagement.verificationBtn.click();
         us013_accountManagement.phoneInputBox.sendKeys("1423412330");
-        ReusableMethods.waitForClickablility(us013_accountManagement.sendVerificationButton,4);
+        ReusableMethods.waitForClickablility(us013_accountManagement.sendVerificationButton,6);
         us013_accountManagement.sendVerificationButton.click();
-        ReusableMethods.waitForClickablility(us013_accountManagement.cancelBtn,5);
+        ReusableMethods.waitForClickablility(us013_accountManagement.cancelBtn,7);
         us013_accountManagement.cancelBtn.click();
         Assert.assertTrue(us013_accountManagement.sendVerificationButton.isEnabled());
 
