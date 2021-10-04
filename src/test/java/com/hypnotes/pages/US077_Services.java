@@ -22,6 +22,7 @@ public class US077_Services {
     @FindBy(id = "title")
     public WebElement categoryName;
 
+    
     @FindBy(id = "price")
     public WebElement priceInput;
 
