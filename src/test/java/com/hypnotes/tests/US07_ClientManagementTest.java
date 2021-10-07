@@ -5,6 +5,7 @@ import com.hypnotes.pages.US07_ClientManagement_ClientPage;
 import com.hypnotes.utilities.ConfigurationReader;
 import com.hypnotes.utilities.Driver;
 import com.hypnotes.utilities.ReusableMethods;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -28,8 +29,14 @@ public class US07_ClientManagementTest extends ReusableMethods {
     @Test(priority = 1) //AC-2 If there is no saved client, show no client yet design with add new client button.
     public void noSavedClientShowNoClient(){
 
-        String noClientsSaved = test.noClientsSaved.getText();
-        Assert.assertEquals(noClientsSaved,"No clients yet");
+        List<WebElement> getClientNames = test.getClientNames;
+        int clientNamesSize= getClientNames.size();
+        if(clientNamesSize==0){
+            Assert.assertTrue(clientNamesSize==0);
+        }else{
+            Assert.assertTrue(clientNamesSize!=0);
+        }
+
 
     }
 
