@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class US26_ServicesTest extends ReusableMethods {
+public class US25_ServicesTest extends ReusableMethods {
     CommonPage CommonPage =new CommonPage();
     ServicesPage services = new ServicesPage();
 
@@ -63,7 +63,7 @@ public class US26_ServicesTest extends ReusableMethods {
         String actualText = services.getCategoryItems.get(0).getText() + " " + services.getDuration.get(0).getText()
                 + " " + services.getPrice.get(0).getText();
 
-        System.out.println(actualText);
+        //System.out.println(actualText);
         Assert.assertEquals(actualText, name +" Duration: " + duration + " mins Price: $" + price);
     }
 
@@ -78,22 +78,29 @@ public class US26_ServicesTest extends ReusableMethods {
     String afterTime = "10";
     String description = "Silver category test";
 
-    services.categoryName.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+    //services.categoryName.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+    ReusableMethods.cleanTextInBox(services.categoryName);
     ReusableMethods.waitFor(1);
     services.categoryName.sendKeys(name);
-    services.priceInput.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+
+    ReusableMethods.cleanTextInBox(services.priceInput);
     ReusableMethods.waitFor(1);
     services.priceInput.sendKeys(price);
-    services.duration.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+
+    ReusableMethods.cleanTextInBox(services.duration);
     ReusableMethods.waitFor(1);
     services.duration.sendKeys(duration);
-    services.blockBefore.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+
+    ReusableMethods.cleanTextInBox(services.blockBefore);
     ReusableMethods.waitFor(1);
     services.blockBefore.sendKeys(beforeTime);
-    services.blockAfter.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+
+    ReusableMethods.cleanTextInBox(services.blockAfter);
     ReusableMethods.waitFor(1);
     services.blockAfter.sendKeys(afterTime);
-    services.description.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+
+    ReusableMethods.cleanTextInBox(services.description);
+    ReusableMethods.waitFor(1);
     services.description.sendKeys(description);
     ReusableMethods.waitFor(1);
 
@@ -102,7 +109,7 @@ public class US26_ServicesTest extends ReusableMethods {
     String actualText = services.getCategoryItems.get(0).getText() + " " + services.getDuration.get(0).getText()
             + " " + services.getPrice.get(0).getText();
 
-    System.out.println(actualText);
+    //System.out.println(actualText);
     Assert.assertEquals(actualText, name +" Duration: " + duration + " mins Price: $" + price);
 
 }
@@ -115,8 +122,8 @@ public class US26_ServicesTest extends ReusableMethods {
         services.okButton.click();
         Driver.getDriver().navigate().refresh();
         ReusableMethods.waitFor(1);
-        System.out.println(services.getCategoryItems.size());
+        //System.out.println(services.getCategoryItems.size());
         Assert.assertTrue(services.getCategoryItems.isEmpty());
-
+        ReusableMethods.logout();
     }
 }
