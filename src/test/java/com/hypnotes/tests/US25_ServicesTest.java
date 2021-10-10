@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class US26_ServicesTest extends ReusableMethods {
+public class US25_ServicesTest extends ReusableMethods {
     CommonPage CommonPage =new CommonPage();
     ServicesPage services = new ServicesPage();
 
