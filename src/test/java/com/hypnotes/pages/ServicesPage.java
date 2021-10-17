@@ -15,20 +15,36 @@ public class ServicesPage {
     @FindBy(xpath = "//a[@href='/dashboard/services']")
     public WebElement servicesButton;
 
-    @FindBy(className = "ant-tabs-tab-btn")
+    @FindBy(xpath ="//div[@id='rc-tabs-0-tab-1']" )
     public WebElement categoryButton;
+
+    @FindBy(xpath ="//div[@id='rc-tabs-0-tab-2']" )
+    public WebElement packagesButton;
 
     @FindBy(xpath = "//span[text()='Add New Category']")
     public WebElement addNewCategory;
 
-    @FindBy(id = "title")
-    public WebElement categoryName;
+    @FindBy(xpath = "//span[text()='Add New Package']")
+    public WebElement addNewPackage;
 
-    @FindBy(id = "price")
-    public WebElement priceInput;
+    @FindBy(xpath = "(//input[@class='ant-input'])[1]")
+    public WebElement inputName;
 
-    @FindBy(id = "duration")
-    public WebElement duration;
+    @FindBy(xpath = "(//input[@class='ant-input'])[2]")
+    public WebElement inputPackageName;
+
+    @FindBy(xpath = "(//input[@id='price'])[1]")
+    public WebElement inputPrice;
+
+    @FindBy(xpath = "(//input[@id='price'])[2]")
+    public WebElement inputPackagePrice;
+
+    @FindBy(xpath = "(//input[@id='duration'])[1]")
+    public WebElement inputDuration;
+
+    @FindBy(xpath = "(//input[@id='duration'])[2]")
+    public WebElement inputPackageDuration;
+
 
     @FindBy(id = "blockBefore")
     public WebElement blockBefore;
@@ -39,11 +55,24 @@ public class ServicesPage {
     @FindBy(id = "paymentRequired")
     public WebElement paymentRequired;
 
-    @FindBy(id = "description")
+    @FindBy(id = "totalSessions")
+    public WebElement totalSessions;
+
+    @FindBy(id = "sessionInterval")
+    public WebElement sessionInterval;
+
+    //@FindBy(id = "description")
+    @FindBy(xpath = "(//textarea[@id='description'])[1]")
     public WebElement description;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "(//textarea[@id='description'])[2]")
+    public WebElement descriptionPackage;
+
+    @FindBy(xpath = "(//button[@type='submit'])[1]")
     public WebElement saveButton;
+
+    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    public WebElement savePackageButton;
 
     @FindBy(xpath = "//div[@class ='ant-card-meta-title']")
     public WebElement categoryList;
@@ -57,6 +86,12 @@ public class ServicesPage {
     @FindBy(xpath= "//div[@class='ant-card-meta-description']/p[2]")
     public List<WebElement> getPrice;
 
+    @FindBy(xpath= "//div[@class='ant-card-meta-description']/p[3]")
+    public List<WebElement> getSessions;
+
+    @FindBy(xpath= "//div[@class='ant-card-meta-description']/p[4]")
+    public List<WebElement> getInterval;
+
     @FindBy(xpath = "//span[@class='anticon anticon-edit']")
     public List<WebElement> editButton;
 
@@ -66,10 +101,11 @@ public class ServicesPage {
     @FindBy(xpath = "//button[@class='ant-btn ant-btn-primary ant-btn-sm']")
     public WebElement okButton;
 
+    @FindBy(xpath = "//div[contains(text(), 'Create a new package')]")
+    public WebElement createPackageTitle;
 
-
-
-
+    @FindBy(xpath = "(//button[@class='ant-switch'])[1]")
+    public WebElement blockExtraTime;
 
 
 

@@ -41,7 +41,7 @@ public class US25_ServicesTest extends ReusableMethods {
 
 
     @Test(priority = 2)
-    public void servicesAdd(){
+    public void categoryAdd(){
         String name = "Golden";
         String price = "90";
         String duration = "40";
@@ -49,9 +49,9 @@ public class US25_ServicesTest extends ReusableMethods {
         String afterTime = "10";
         String description = "Golden category test";
 
-        services.categoryName.sendKeys(name);
-        services.priceInput.sendKeys(price);
-        services.duration.sendKeys(duration);
+        services.inputName.sendKeys(name);
+        services.inputPrice.sendKeys(price);
+        services.inputDuration.sendKeys(duration);
         services.blockBefore.sendKeys(beforeTime);
         services.blockAfter.sendKeys(afterTime);
         services.description.sendKeys(description);
@@ -68,54 +68,54 @@ public class US25_ServicesTest extends ReusableMethods {
     }
 
 
-@Test(priority = 3)
+    @Test(priority = 3)
     public void servicesEdit(){
-    services.editButton.get(0).click();
-    String name = "Silver";
-    String price = "100";
-    String duration = "30";
-    String beforeTime = "15";
-    String afterTime = "10";
-    String description = "Silver category test";
+        services.editButton.get(0).click();
+        String name = "Silver";
+        String price = "100";
+        String duration = "30";
+        String beforeTime = "15";
+        String afterTime = "10";
+        String description = "Silver category test";
 
-    //services.categoryName.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
-    ReusableMethods.cleanTextInBox(services.categoryName);
-    ReusableMethods.waitFor(1);
-    services.categoryName.sendKeys(name);
+        //services.categoryName.sendKeys(Keys.CONTROL + "a", Keys.BACK_SPACE);
+        ReusableMethods.cleanTextInBox(services.inputName);
+        ReusableMethods.waitFor(1);
+        services.inputName.sendKeys(name);
 
-    ReusableMethods.cleanTextInBox(services.priceInput);
-    ReusableMethods.waitFor(1);
-    services.priceInput.sendKeys(price);
+        ReusableMethods.cleanTextInBox(services.inputPrice);
+        ReusableMethods.waitFor(1);
+        services.inputPrice.sendKeys(price);
 
-    ReusableMethods.cleanTextInBox(services.duration);
-    ReusableMethods.waitFor(1);
-    services.duration.sendKeys(duration);
+        ReusableMethods.cleanTextInBox(services.inputDuration);
+        ReusableMethods.waitFor(1);
+        services.inputDuration.sendKeys(duration);
 
-    ReusableMethods.cleanTextInBox(services.blockBefore);
-    ReusableMethods.waitFor(1);
-    services.blockBefore.sendKeys(beforeTime);
+        ReusableMethods.cleanTextInBox(services.blockBefore);
+        ReusableMethods.waitFor(1);
+        services.blockBefore.sendKeys(beforeTime);
 
-    ReusableMethods.cleanTextInBox(services.blockAfter);
-    ReusableMethods.waitFor(1);
-    services.blockAfter.sendKeys(afterTime);
+        ReusableMethods.cleanTextInBox(services.blockAfter);
+        ReusableMethods.waitFor(1);
+        services.blockAfter.sendKeys(afterTime);
 
-    ReusableMethods.cleanTextInBox(services.description);
-    ReusableMethods.waitFor(1);
-    services.description.sendKeys(description);
-    ReusableMethods.waitFor(1);
+        ReusableMethods.cleanTextInBox(services.description);
+        ReusableMethods.waitFor(1);
+        services.description.sendKeys(description);
+        ReusableMethods.waitFor(1);
 
-    ReusableMethods.clickWithJS(services.saveButton);
-    ReusableMethods.waitFor(1);
-    String actualText = services.getCategoryItems.get(0).getText() + " " + services.getDuration.get(0).getText()
-            + " " + services.getPrice.get(0).getText();
+        ReusableMethods.clickWithJS(services.saveButton);
+        ReusableMethods.waitFor(1);
+        String actualText = services.getCategoryItems.get(0).getText() + " " + services.getDuration.get(0).getText()
+                + " " + services.getPrice.get(0).getText();
 
-    //System.out.println(actualText);
-    Assert.assertEquals(actualText, name +" Duration: " + duration + " mins Price: $" + price);
+        //System.out.println(actualText);
+        Assert.assertEquals(actualText, name +" Duration: " + duration + " mins Price: $" + price);
 
-}
+    }
 
 
-@Test(priority = 4)
+    @Test(priority = 4)
     public void servicesDelete(){
         services.deleteButton.get(0).click();
         ReusableMethods.waitFor(1);
