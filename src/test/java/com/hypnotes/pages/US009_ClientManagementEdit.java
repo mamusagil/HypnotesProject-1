@@ -215,15 +215,15 @@ public class US009_ClientManagementEdit {
         inputBoxes.get(9).sendKeys(zipCode);
         ReusableMethods.waitFor(2);
         String projectPath = System.getProperty("user.dir");
-        String filePath1 = "src/test/resources/2014gr0506e.pdf";
+        String filePath1 = "src/test/resources/Todd-Haynes-2017.jpeg";
         String fullPath = projectPath+"/"+filePath1;
         browseFile.sendKeys(fullPath);
-        String filePath2 = "src/test/resources/3-percentages-ws.pdf";
-        String fullPath2= projectPath+"/"+filePath2;
-        ReusableMethods.waitFor(5);
-        addNewDocument.sendKeys(fullPath2);
-        ReusableMethods.waitFor(3);
-        ReusableMethods.clickWithJS(buttonUpload);
+//        String filePath2 = "src/test/resources/3-percentages-ws.pdf";
+//        String fullPath2= projectPath+"/"+filePath2;
+//        ReusableMethods.waitFor(5);
+//        addNewDocument.sendKeys(fullPath2);
+//        ReusableMethods.waitFor(3);
+//        ReusableMethods.clickWithJS(buttonUpload);
 
 
     }
