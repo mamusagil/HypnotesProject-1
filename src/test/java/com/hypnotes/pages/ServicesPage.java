@@ -21,11 +21,21 @@ public class ServicesPage {
     @FindBy(xpath ="//div[@id='rc-tabs-0-tab-2']" )
     public WebElement packagesButton;
 
+    @FindBy(xpath ="//div[@id='rc-tabs-0-tab-3']" )
+    public WebElement groupSessionButton;
+
+
+
     @FindBy(xpath = "//span[text()='Add New Category']")
     public WebElement addNewCategory;
 
     @FindBy(xpath = "//span[text()='Add New Package']")
     public WebElement addNewPackage;
+
+    @FindBy(xpath = "//span[text()='Add New Session']")
+    public WebElement addNewSession;
+
+
 
     @FindBy(xpath = "(//input[@class='ant-input'])[1]")
     public WebElement inputName;

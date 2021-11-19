@@ -74,9 +74,11 @@ public class US26_ServicesPackagesTest extends ReusableMethods {
 
     }
 
+
     @Test(priority = 3)
     public void packagesEdit(){
-        services.editButton.get(0).click();
+
+        ReusableMethods.clickWithJS(services.editButton.get(0));
 
         String name = "Banana";
         String price = "3";
@@ -127,14 +129,18 @@ public class US26_ServicesPackagesTest extends ReusableMethods {
 
     }
 
+
     @Test(priority = 4)
     public void servicesDelete(){
-        services.deleteButton.get(0).click();
+
+        ReusableMethods.clickWithJS(services.deleteButton.get(0));
+        //services.deleteButton.get(0).click();
         ReusableMethods.waitFor(1);
         services.okButton.click();
         Driver.getDriver().navigate().refresh();
         ReusableMethods.waitFor(1);
         Assert.assertTrue(services.getCategoryItems.isEmpty());
-        ReusableMethods.logout();
+        //ReusableMethods.logout();
     }
+
 }
