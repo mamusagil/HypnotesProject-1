@@ -13,9 +13,7 @@ import org.testng.annotations.Test;
 public class US25_ServicesTest extends ReusableMethods {
     CommonPage CommonPage =new CommonPage();
     ServicesPage services = new ServicesPage();
-
-
-
+    
     @BeforeTest
     public void login() throws InterruptedException {
         Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_linkm"));
@@ -70,7 +68,14 @@ public class US25_ServicesTest extends ReusableMethods {
 
     @Test(priority = 3)
     public void servicesEdit(){
-        services.editButton.get(0).click();
+
+        int index = -1;
+        for (int i = 0; i < services.getCategoryItems.size(); i++) {
+            if(services.getCategoryItems.get(i).getText().equals("Golden"))
+                index = i;
+        }
+
+        services.editButton.get(index).click();
         String name = "Silver";
         String price = "100";
         String duration = "30";
@@ -106,8 +111,8 @@ public class US25_ServicesTest extends ReusableMethods {
 
         ReusableMethods.clickWithJS(services.saveButton);
         ReusableMethods.waitFor(1);
-        String actualText = services.getCategoryItems.get(0).getText() + " " + services.getDuration.get(0).getText()
-                + " " + services.getPrice.get(0).getText();
+        String actualText = services.getCategoryItems.get(index).getText() + " " + services.getDuration.get(index).getText()
+                + " " + services.getPrice.get(index).getText();
 
         //System.out.println(actualText);
         Assert.assertEquals(actualText, name +" Duration: " + duration + " mins Price: $" + price);
@@ -117,7 +122,14 @@ public class US25_ServicesTest extends ReusableMethods {
 
     @Test(priority = 4)
     public void servicesDelete(){
-        services.deleteButton.get(0).click();
+
+        int index = -1;
+        for (int i = 0; i < services.getCategoryItems.size(); i++) {
+            if(services.getCategoryItems.get(i).getText().equals("Silver"))
+                index = i;
+        }
+
+        services.deleteButton.get(index).click();
         ReusableMethods.waitFor(1);
         services.okButton.click();
         Driver.getDriver().navigate().refresh();
