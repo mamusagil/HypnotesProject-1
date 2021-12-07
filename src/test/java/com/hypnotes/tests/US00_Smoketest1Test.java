@@ -23,9 +23,9 @@ public class US00_Smoketest1Test extends ReusableMethods{
         us00DenemePage.loginButton.click();
 
         ReusableMethods.waitFor(1);
-        us00DenemePage.emailBox.sendKeys(ConfigurationReader.getProperty("semra-email"));
+        us00DenemePage.emailBox.sendKeys(ConfigurationReader.getProperty("MDemail"));
         ReusableMethods.waitFor(1);
-        us00DenemePage.passwordBox.sendKeys(ConfigurationReader.getProperty("semra-password"));
+        us00DenemePage.passwordBox.sendKeys(ConfigurationReader.getProperty("MDpassword"));
         ReusableMethods.waitFor(1);
         us00DenemePage.loginButton1.click();
         ReusableMethods.waitFor(1);

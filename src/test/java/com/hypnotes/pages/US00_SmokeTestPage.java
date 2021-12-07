@@ -68,7 +68,7 @@ public class US00_SmokeTestPage {
  public WebElement addNewCategoryPriceBox;
  @FindBy(id= "duration")
  public WebElement  addNewCategoryDurationDropDown;
- @FindBy(xpath= " //div[@class='rc-virtual-list-holder-inner']/div[1]/div")
+ @FindBy(xpath= "//div[@title='30']")
  public WebElement duration30Minutes;
  @FindBy(id= "blockBefore")
  public WebElement  blockBeforeBox;
