@@ -179,5 +179,7 @@ public class US00_Smoketest2Test {
      us00DenemePage.inputTherapistPassword.sendKeys("Test123.");
      ReusableMethods.waitFor(2);
      us00DenemePage.clickSignUp.click();
+     String alert = "The email address you entered is already in use on another account. Please try another email address or login.";
+     Assert.assertEquals(us00DenemePage.alertPopUp.getText(), alert);
     }
 }
