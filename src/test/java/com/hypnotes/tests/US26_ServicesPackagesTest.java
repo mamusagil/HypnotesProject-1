@@ -74,9 +74,18 @@ public class US26_ServicesPackagesTest extends ReusableMethods {
 
     }
 
+
     @Test(priority = 3)
     public void packagesEdit(){
-        services.editButton.get(0).click();
+
+
+        int index = -1;
+        for (int i = 0; i < services.getCategoryItems.size(); i++) {
+            if(services.getCategoryItems.get(i).getText().equals("Apple"))
+                index = i;
+        }
+
+        ReusableMethods.clickWithJS(services.editButton.get(index));
 
         String name = "Banana";
         String price = "3";
@@ -115,9 +124,9 @@ public class US26_ServicesPackagesTest extends ReusableMethods {
         ReusableMethods.clickWithJS(services.savePackageButton);
         ReusableMethods.waitFor(1);
 
-        String actualText = services.getCategoryItems.get(0).getText() + " " + services.getDuration.get(0).getText()
-                + " " + services.getPrice.get(0).getText()+ " " + services.getSessions.get(0).getText()
-                + " " + services.getInterval.get(0).getText();
+        String actualText = services.getCategoryItems.get(index).getText() + " " + services.getDuration.get(index).getText()
+                + " " + services.getPrice.get(index).getText()+ " " + services.getSessions.get(index).getText()
+                + " " + services.getInterval.get(index).getText();
 
         String expectedText = name +" Duration: " + duration + " mins Price: $" + price
                 + " Total Sessions: " + totalSessions + " Interval: " + sessionInterval + " weeks";
@@ -127,14 +136,24 @@ public class US26_ServicesPackagesTest extends ReusableMethods {
 
     }
 
+
     @Test(priority = 4)
     public void servicesDelete(){
-        services.deleteButton.get(0).click();
+
+        int index = -1;
+        for (int i = 0; i < services.getCategoryItems.size(); i++) {
+            if(services.getCategoryItems.get(i).getText().equals("Banana"))
+                index = i;
+        }
+
+        ReusableMethods.clickWithJS(services.deleteButton.get(index));
+        //services.deleteButton.get(0).click();
         ReusableMethods.waitFor(1);
         services.okButton.click();
         Driver.getDriver().navigate().refresh();
         ReusableMethods.waitFor(1);
         Assert.assertTrue(services.getCategoryItems.isEmpty());
-        ReusableMethods.logout();
+        //ReusableMethods.logout();
     }
+
 }
