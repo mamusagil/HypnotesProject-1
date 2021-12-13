@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -140,5 +141,45 @@ public class US00_Smoketest2Test {
 }
     public  void scrollDownToElement(String value) {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,"+value+")");
+    }
+    @Test
+    public void signUpClient() {
+     Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link_zehra"));
+     ReusableMethods.waitFor(2);
+     us00DenemePage.signUpButton.click();
+     ReusableMethods.waitFor(2);
+     us00DenemePage.registerClient.click();
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputName.sendKeys("zehra");
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputSurName.sendKeys("thetester");
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputEmail.sendKeys("zehratester@gmail.com");
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputPassword.sendKeys("Degerli39@");
+     ReusableMethods.waitFor(2);
+
+     us00DenemePage.clickSignUp.click();
+     String alert = "The email address you entered is already in use on another account. Please try another email address or login.";
+     Assert.assertEquals(us00DenemePage.alertPopUp.getText(), alert);
+    }
+
+    @Test
+    public void signUpTherapist(){
+     Driver.getDriver().get(ConfigurationReader.getProperty("hypnotes_link_zehra"));
+     ReusableMethods.waitFor(2);
+     us00DenemePage.signUpButton.click();
+     ReusableMethods.waitFor(2);
+     us00DenemePage.registerTherapist.click();
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputFullName.sendKeys("Alicia Key");
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputTherapistEmail.sendKeys("aliciakey@gmail.com");
+     ReusableMethods.waitFor(2);
+     us00DenemePage.inputTherapistPassword.sendKeys("Test123.");
+     ReusableMethods.waitFor(2);
+     us00DenemePage.clickSignUp.click();
+     String alert = "The email address you entered is already in use on another account. Please try another email address or login.";
+     Assert.assertEquals(us00DenemePage.alertPopUp.getText(), alert);
     }
 }
